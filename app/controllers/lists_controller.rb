@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   end
 
   def index
+    @lists = List.all
   end
 
   def create
@@ -11,7 +12,7 @@ class ListsController < ApplicationController
     list.save
     redirect_to '/top'
   end
-
+  
   def show
   end
 
@@ -20,6 +21,6 @@ class ListsController < ApplicationController
 
   private
   def list_params
-    params.require(:list).parmit(:title, :body)
+    params.require(:list).permit(:title, :body)
   end
 end
